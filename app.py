@@ -17,7 +17,7 @@ from PIL import Image
 import numpy as np
 import skvideo.io
 if opts['colab-mode']:
-    from flask_ngrok import run_with_ngrok #to run the application on colab using ngrok
+    from flask_ngrok2 import run_with_ngrok #to run the application on colab using ngrok
 
 
 from cartoonize import WB_Cartoonize
@@ -33,7 +33,7 @@ if not opts['run_local']:
 
 app = Flask(__name__)
 if opts['colab-mode']:
-    run_with_ngrok(app)   #starts ngrok when the app is run
+    run_with_ngrok(app=app,auth_token='2906juZScS7LxVgEOb06UM78LWr_4kF7b7AdCPab3mv1AonyX')   #starts ngrok when the app is run
 
 app.config['UPLOAD_FOLDER_VIDEOS'] = 'static/uploaded_videos'
 app.config['CARTOONIZED_FOLDER'] = 'static/cartoonized_images'
@@ -113,7 +113,9 @@ def cartoonize():
                 if opts['original_frame_rate']:
                     output_frame_rate = original_frame_rate
                 else:
-                    output_frame_rate = opts['output_frame_rate']    
+                    output_frame_rate = opts['output_frame_rate'] 
+
+                print(output_frame_rate)   
 
                 output_frame_rate_number = int(output_frame_rate.split('/')[0])
 

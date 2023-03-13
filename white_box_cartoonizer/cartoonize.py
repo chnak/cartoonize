@@ -88,7 +88,6 @@ class WB_Cartoonize:
     def process_video(self, fname, frame_rate):
         ## Capture video using opencv
         cap = cv2.VideoCapture(fname)
-
         target_size = (int(cap.get(3)),int(cap.get(4)))
         output_fname = os.path.abspath('{}/{}-{}.mp4'.format(fname.replace(os.path.basename(fname), ''),str(uuid.uuid4())[:7],os.path.basename(fname).split('.')[0]))
 
@@ -119,15 +118,17 @@ class WB_Cartoonize:
         p.wait()
 
         os.system("rm "+output_fname)
-
         return final_name
 
 if __name__ == '__main__':
     gpu = len(sys.argv) < 2 or sys.argv[1] != '--cpu'
     wbc = WB_Cartoonize(os.path.abspath('white_box_cartoonizer/saved_models'), gpu)
-    img = cv2.imread('white_box_cartoonizer/test.jpg')
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    cartoon_image = wbc.infer(img)
-    import matplotlib.pyplot as plt
-    plt.imshow(cartoon_image)
-    plt.show()
+    wbc.process_video('static/aa2.mp4', '24/1')
+    # img = cv2.imread('white_box_cartoonizer/test.jpg')
+    # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # cartoon_image = wbc.infer(img)
+    # cartoonized_img_name = os.path.join('white_box_cartoonizer', "tessss.jpg")
+    # cv2.imwrite(cartoonized_img_name, cv2.cvtColor(cartoon_image, cv2.COLOR_RGB2BGR))
+    # import matplotlib.pyplot as plt
+    # plt.imshow(cartoon_image)
+    # plt.show()
