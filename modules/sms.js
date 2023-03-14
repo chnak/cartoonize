@@ -1,5 +1,5 @@
 exports.name="sms"
-exports.url= 'https://open.feishu.cn/open-apis/bot/v2/hook/1e097f61-0ecc-4718-8752-de0dc3c38b11'//"https://sms.yunpian.com/v2/sms/single_send.json"
+exports.url= 'https://open.feishu.cn/open-apis/bot/v2/hook/7d18282d-0a58-430c-a8a2-9f4c8ebf91d2'//"https://sms.yunpian.com/v2/sms/single_send.json"
 
 exports.install=async function(){
 	//this.send('adad')
