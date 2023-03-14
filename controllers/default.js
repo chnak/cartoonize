@@ -18,8 +18,8 @@ async function view_parse() {
 			var res=await kuaishou.toFile(url,name)
 			console.log(res)
 			var response = await SHELL('python video.py '+res.name);
-        	var url=`${ self.uri.protocol }//${ self.uri.hostname }/videos/${ id }_cartoon_audio.mp4`;
-			sms.send('【视频转换】成功：'+url)
+        	var a_url=`${ self.uri.protocol }//${ self.uri.hostname }/videos/${ id }_cartoon_audio.mp4`;
+			sms.send('【视频转换】成功：'+a_url)
 			next()
 		})
 		return this.json({code:200,data:'请等待消息'})

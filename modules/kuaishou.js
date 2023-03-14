@@ -22,7 +22,7 @@ exports.headers= {
 }
 
 exports.install= async function(){
-	
+
 }
 
 exports.toFile=async function(url,fname){
