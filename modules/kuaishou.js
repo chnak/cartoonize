@@ -1,3 +1,5 @@
+const { UID } = require("total4")
+
 exports.id='kuaishou'
 exports.name='kuaishou'
 exports.host='https://tutjiexi.com/parse/tutu'
@@ -25,10 +27,10 @@ exports.install= async function(){
 	
 }
 
-exports.toFile=async function(url){
+exports.toFile=async function(url,fname){
 	var res=await this.parse(url)
 	if(res.status===200){
-		var name=UID()+'.mp4'
+		var name=fname?fname:(UID()+'.mp4')
 		var path=await XGETFILE(res.data.sourceUrl,name)
 		return {path:path,name:name}
 	}else{
