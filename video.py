@@ -20,8 +20,8 @@ import skvideo.io
 from cartoonize import WB_Cartoonize
 
 config={}
-config['UPLOAD_FOLDER_VIDEOS'] = 'static/uploaded_videos'
-config['CARTOONIZED_FOLDER'] = 'static/cartoonized_images'
+config['UPLOAD_FOLDER_VIDEOS'] = 'public/videos'
+config['CARTOONIZED_FOLDER'] = 'public/images'
 
 config['OPTS'] = opts
 
@@ -112,10 +112,11 @@ def cartooniz_video(filename):
     # Delete the videos from local disk
     os.system("rm {} {} {} {}".format(original_video_path, modified_video_path, audio_file_path, cartoon_video_path))
     
-    return True
+    return final_cartoon_video_path
 
 
 
 if __name__ == "__main__":
     # Commemnt the below line to run the Appication on Google Colab using ngrok
-    cartooniz_video('aaa.mp4')
+    file_name=sys.argv[1] 
+    cartooniz_video(file_name)
