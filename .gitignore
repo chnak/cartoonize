@@ -1,5 +1,6 @@
 __pycache__/
 .vscode/*
 node_modules/*
+tmp/*
 static/uploaded_videos/*.mp4
 static/cartoonized_images/*.jpg

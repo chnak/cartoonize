@@ -28,3 +28,8 @@ const options = {};
 
 var type = process.argv.indexOf('release', 1) !== -1 ? 'release' : 'debug';
 require('total4/' + type)(options);
+const ngrok = require('ngrok');
+(async function() {
+const url = await ngrok.connect({addr:8005,authtoken:'2906juZScS7LxVgEOb06UM78LWr_4kF7b7AdCPab3mv1AonyX'});
+console.log(url)
+})();
