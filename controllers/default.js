@@ -21,7 +21,7 @@ async function view_parse() {
 			sms.send('【视频转换】成功：'+url)
 			next()
 		})
-		return this.json({code:200,data:res})
+		return this.json({code:200,data:'请等待消息'})
 	}else{
 		return this.json({code:400,msg:'请输入url'})
 	}
