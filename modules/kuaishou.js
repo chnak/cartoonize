@@ -1,5 +1,3 @@
-const { UID } = require("total4")
-
 exports.id='kuaishou'
 exports.name='kuaishou'
 exports.host='https://tutjiexi.com/parse/tutu'
