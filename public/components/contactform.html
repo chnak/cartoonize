@@ -1,0 +1,38 @@
+<div data-jc-scope="?" class="hidden" data-jc-class="hidden">
+
+	<div data-jc="visible" data-jc-path="response" data-jc-config="if:value && value.code === 200" class="hidden">
+		<div class="message-success"><span class="fa fa-check-circle"></span>Thanks, the contact form has been sent successfully.</div>
+		<br />
+	</div>
+
+	<div data-jc="visible" class="dx-box" data-jc-path="response" data-jc-config="if:!value || !value.success">
+		<div class="row">
+			<div class="col-md-12">
+				<div data-jc="textbox" data-jc-path="url" data-jc-value="''" data-jc-config="required:true">URL</div>
+			</div>
+		</div>
+		<br />
+		<div data-jc="error" data-jc-path="response"></div>
+		<br />
+		<div class="row">
+			<div class="col-md-6">
+				<div data-jc="validation" data-jc-path="?">
+					<button class="button exec" name="submit" disabled="disabled" data-exec="contactformsubmit">SUBMIT FORM</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.dx-box input{ padding: 5px 10px; min-width: 100%;}
+</style>
+<script>
+	!window.contactformsubmit && (window.contactformsubmit = function(el) {
+		var component = el.closest('[data-jc-path]').component();
+		var scope = component.pathscope;
+		if (CAN(scope + '.*')) {
+			RESET(scope + '.*');
+			AJAX('GET /parse', GET(scope), scope + '.response');
+		}
+	});
+</script>
